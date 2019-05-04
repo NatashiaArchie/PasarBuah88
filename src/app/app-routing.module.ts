@@ -10,16 +10,19 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { LoginLayoutComponent } from './layout/login-layout/login-layout.component';
 
 const routes: Routes = [
+  
+  { path: '', component: HomeLayoutComponent, 
+  children: [
+    { path: '', component: HomepageComponent},
+    { path: 'home', component: HomepageComponent},
+    { path: 'cart', component: CartComponent },
+    { path: 'checkout', component: CheckoutComponent }
+  ]},
+
   { path: '', component: LoginLayoutComponent, 
   children: [
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent},
-  ]},
-  { path: '', component: HomeLayoutComponent, 
-  children: [
-    { path: 'home', component: HomepageComponent},
-    { path: 'cart', component: CartComponent },
-    { path: 'checkout', component: CheckoutComponent }
   ]},
 ];
 
