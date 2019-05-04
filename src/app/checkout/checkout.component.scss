@@ -1,0 +1,39 @@
+.images {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%; 
+    max-height: 100%;
+  }
+
+.sub-title {
+color: #709524;
+}
+
+// mat-grid-tile {
+// background: lightblue;
+// }
+
+.radio-button {
+    margin-left: 15px;
+}
+
+.radioBorder {
+  width: 100%; 
+  padding: 10px; 
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.bold {
+  font-weight: 500;
+
+}
+
+/deep/ .mat-radio-label-content {
+  width: 100%
+}
+
+/deep/ .mat-radio-label {
+  width: 100%
+}

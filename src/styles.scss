@@ -1,0 +1,126 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/theming';
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+
+$md-mypallet-primary: (
+    50 : #f1f7e6,
+    100 : #ddeac0,
+    200 : #c6dd96,
+    300 : #afcf6c,
+    400 : #9dc44d,
+    500 : #8cba2d,
+    600 : #84b328,
+    700 : #79ab22,
+    800 : #6fa31c,
+    900 : #5c9411,
+    A100 : #e4ffc5,
+    A200 : #cdff92,
+    A400 : #b5ff5f,
+    A700 : #aaff46,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$md-mypallet-accent: (
+    50 : #eef2e5,
+    100 : #d4dfbd,
+    200 : #b8ca92,
+    300 : #9bb566,
+    400 : #85a545,
+    500 : #709524,
+    600 : #688d20,
+    700 : #5d821b,
+    800 : #537816,
+    900 : #41670d,
+    A100 : #d1ff9b,
+    A200 : #b9ff68,
+    A400 : #a1ff35,
+    A700 : #95ff1b,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+
+
+
+
+.searchbox input[type=text]:focus:not([readonly]) {
+    border: 1px solid #6c757d;
+    box-shadow: 0 0 0 1px #899097;
+}
+
+.borderbottom {
+    border-bottom: 1px solid #ABCC67;
+    border-width: medium;
+    margin-bottom: 10px;
+}
+
+.buttonrow {
+    float: right;
+    margin-bottom: 10px;
+}
+
+//button
+.mybutton {
+    background-color: #8cba2d;
+    border-color: #8cba2d;
+}
+
+.textbox {
+    margin-top: 8px;
+    width: 100%;
+}
+
+.actionButton {
+    margin-left: 10px;
+}
+
+.btnn {
+    background-color: #8cba2d;
+    border-color: #8cba2d;
+    color: white
+  }
+
+.btnn:hover {
+    color: white
+}
+
+* {
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+}
+
+$primary: mat-palette($md-mypallet-primary);
+$accent: mat-palette($md-mypallet-primary);
+
+$theme: mat-light-theme($primary, $accent);
+
+@include angular-material-theme($theme);

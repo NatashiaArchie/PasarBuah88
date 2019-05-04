@@ -1,0 +1,36 @@
+.loginfont{
+    color: white;
+    font: bold;
+}
+
+.bg {
+    background: url("../../assets/images/groceryimages.jpg");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;  
+    
+}
+
+.textbox {
+    margin-top: 8px;
+    width: 100%;
+}
+.formborder {
+    border: 1px solid;
+    border-color: #212529;
+}
+
+.form-container {
+    border: 0px solid;
+    padding: 30px 40px;
+    margin-top: 5vh;
+    -webkit-box-shadow: -1px 1px 43px 12px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 1px 43px 12px rgba(0,0,0,0.75);
+    box-shadow: -1px 1px 43px 12px rgba(0,0,0,0.75);
+    background-color: yellowgreen;
+    border-radius: 10px;
+}
+

@@ -1,0 +1,134 @@
+
+<div class="row" style="margin-right: 0; margin-left: 0">
+<div class="col-md-10 col-sm-10 col-xs-12" style="padding-right: 0">
+  <div class="mid">
+      <slideshow
+                [minHeight]="'450px'"
+                [autoPlay]="true"
+                [showArrows]="true"
+                [imageUrls]="imageSources">
+      </slideshow>
+  </div> 
+</div>
+<div class="col-md-2 col-sm-2 col-xs-12 container" style="padding-left: 0">
+    <div class="container-fluid">
+          <nav  class="d-none d-md-block sidebar">
+            <div class="sidebar-sticky">
+              <ul class="nav flex-column">
+                <li class="nav-item" style="margin-top: 40px">
+                  <a class="nav-link active" routerLink="/dashboard">
+                    <span data-feather="home"></span>
+                    Dashboard <span class="sr-only">(current)</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" routerLink="/product">
+                    <span data-feather="file"></span>
+                    Products
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" routerLink="/category">
+                    <span data-feather="file"></span>
+                    Category
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" routerLink="/order">
+                    <span data-feather="shopping-cart"></span>
+                    Orders
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" routerLink="/voucher">
+                    <span data-feather="users"></span>
+                    Vouchers
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" routerLink="/manageStaff">
+                    <span data-feather="bar-chart-2"></span>
+                    Manage Staff
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" routerLink="/manageStaff">
+                    <span data-feather="layers"></span>
+                    Reports
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" routerLink=""(click)="signout()">
+                    <span data-feather="layers"></span>
+                    Sign Out
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+      </div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-11 col-sm-10 col-xs-12 shadow-lg p-4 mb-4 bg-white" style=" margin: 0 auto; margin-top:20px;">
+  
+  <h5 class="sub-title">Category</h5>
+  
+  <mat-grid-list cols="4" rowHeight="2:1">
+    <mat-grid-tile class="shadow bg-white" *ngFor="let cat of categoryService.list">
+      <div style="max-width: 60%; height: 80%;">
+          <img class="images" [src]=cat.ImageUrl>
+      </div>
+      <div>
+          <a class="nav-link" style="font-weight: 500">
+            <span >{{cat.CategoryName}}</span>
+          </a>
+      </div>
+    </mat-grid-tile>
+
+  <!-- <mat-grid-tile class="shadow bg-white">
+      <div style="max-width: 60%; height: 80%;" fxLayout="row" fxLayoutAlign="center center" >
+          <img class="images" src="../../assets/images/meats.png" >
+      </div> 
+      <div>
+          <a class="nav-link">
+            <span data-feather="layers"></span>
+            Fresh Product
+          </a>
+      </div>
+    </mat-grid-tile> -->
+  </mat-grid-list>
+
+</div>
+</div>
+<!-- ------------------------------------------Product------------------------------------------------ -->
+<div class="row">
+  <div class="col-md-11 col-sm-10 col-xs-12 shadow-lg p-4 mb-4 bg-white" style=" margin: 0 auto; margin-top:20px;">
+    
+    <h5 class="sub-title">Promotion</h5>
+    <mat-grid-list cols="5" rowHeight="3:4">
+        <mat-grid-tile class="shadow bg-white" *ngFor="let pd of categoryService.productList">
+          <div  fxLayout="column" fxLayoutAlign="center center" style="height: 100%; width: 100%; align-items: normal">
+              <div style="height: 50%" fxLayout="row" fxLayoutAlign="center center"> 
+                  <img class="images" [src]=pd.ImageUrl>
+              </div>
+              <!----------------------------------------------------------------------------------------------->
+              <div class="productDetail" fxLayout="column" fxLayoutAlign="center start">
+                  <div class="row" style ="margin-left: 0px">
+                      <h5 class="h5">RM {{pd.SalesPrice | number : '1.2-2'}}</h5><small>/ {{pd.ProductUnitType}}</small>
+                  </div>
+                  <div class="desc" matTooltip={{pd.ProductName}} matTooltipPosition="below">
+                    <h6>{{pd.ProductName}}</h6> 
+                  </div>
+                  <div class="desc" matTooltip={{pd.ProductDescription}} matTooltipPosition="below">
+                    <small >{{pd.ProductDescription}}</small>
+                  </div>  
+                  <button class="btn btn-sm btn-block" (click)="addToCart(pd)">Add to Card</button>
+              </div>
+          </div> 
+            
+        </mat-grid-tile>
+      </mat-grid-list>
+  </div>
+  </div>
+  

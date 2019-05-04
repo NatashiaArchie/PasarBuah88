@@ -1,0 +1,107 @@
+<div class="col-md-10 col-sm-10 col-xs-12" style="margin: 0 auto">
+    <form #orderForm="ngForm" (ngSubmit)="onSubmit(orderForm)">
+    <div class="row">
+        <input type="hidden" class="form-control hidden" name="CustomerId" #CustomerId="ngModel" [(ngModel)]="UserId">
+        <input type="hidden" class="form-control hidden" name="PurchaseDate" #PurchaseDate="ngModel" [(ngModel)]="purchaseDate">
+        <input type="hidden" class="form-control hidden" name="TotalPrice" #TotalPrice="ngModel" [(ngModel)]="TotalAmount">
+        <input type="hidden" class="form-control hidden" name="PaymentMethod" #PaymentMethod="ngModel" [(ngModel)]="order.PaymentMethod">
+        <input type="hidden" class="form-control hidden" name="OrderStatus" #StatusOrder="ngModel" [(ngModel)]="order.OrderStatus">
+
+        <div class="col-md-8 col-sm-8 col-xs-12 shadow-lg p-4 mb-4 bg-white" style=" margin: 0 auto; margin-top:70px; border-radius: 5px">
+            <div fxLayout="row" fxLayoutAlign="space-between center" style="margin-bottom: 20px"> 
+                <h5 class="sub-title">Shipping Address</h5>
+                <button type="button" class="btn btnn" (click)="openDialog()">Add New Address</button>
+            </div>
+
+            <mat-radio-group aria-label="Select an option" style="width: 100%" [class.is-invalid]="AddressId.invalid && AddressId.touched"
+            name="AddressId" #AddressId="ngModel" [(ngModel)]="order.AddressId" required>
+                <mat-radio-button [ngClass]="{'d-none': address.Id != UserId}" *ngFor="let address of addressService.list" class="border radioBorder"  [value]=address.AddressId style="width: 100%">
+                    <div fxLayout="row" fxLayoutAlign="space-between center" style="width: 100%"> 
+                            <div class="radio-button" fxLayout="column" fxLayoutAlign="center start" style="width: 90%">      
+                                <span class="bold">{{address.Name}} </span>
+                                <span>{{address.PhoneNumber}}</span>
+                                <span>{{address.DeliveryAddress}}</span>
+                            </div>
+                            <div fxLayout="column" fxLayoutAlign="end center" style="width: 10%">      
+                                <span><i class="material-icons" (click)="editDialog(address)">edit</i></span>
+                            </div>
+                    </div>
+                </mat-radio-button>
+                <small class="text-danger" [class.d-none]="AddressId.valid || AddressId.untouched">Address is required</small>
+                <!-- <mat-radio-button value="2" class="border radioBorder">
+                    <div class="radio-button" fxLayout="column" fxLayoutAlign="start start" >
+                        <span  class="bold">Christie Natashia Archie</span>
+                        <span>+601151145416</span>
+                        <span>Endah Promenade, Jalan 1/149 Taman Sri Endah</span>
+                    </div>
+                </mat-radio-button> -->
+            </mat-radio-group>
+
+        </div>
+        
+        <div class="col-md-3 col-sm-3 col-xs-12 shadow-lg p-4 mb-4 bg-white" style=" margin: 0 auto; margin-top:70px; border-radius: 5px; height: 300px">
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+                <span>Sub-total</span>
+                <span>RM {{ totalPrice | number : '1.2-2'}}</span>
+            </div>
+            <div class="border-bottom" fxLayout="row" fxLayoutAlign="space-between center">
+                <span>Service Fee</span>
+                <span>Free</span>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+                <h5>TOTAL</h5>
+                <h5>RM {{ totalPrice | number : '1.2-2'}}</h5>
+            </div>
+            <button type="submit" class="btn btnn" style="width: 100%" [disabled]="!orderForm.valid">Confirm Order</button>
+        </div>
+
+        <!-- -------------------------------------------------------------------------- -->
+        <div class="col-md-8 col-sm-8 col-xs-12 shadow-lg p-4 mb-4 bg-white" style=" margin: 0 auto; margin-top:0px; border-radius: 5px; height: 150px">
+            <!-- <div fxLayout="row" fxLayoutAlign="space-between center"> -->
+                <h5 class="sub-title">Delivery Time</h5>
+            <!-- </div> -->
+
+            <mat-form-field style="margin-right: 10px">
+                <input matInput [disabled]="!AddressId.valid" name="DeliveryDate" #DeliveryDate="ngModel" [(ngModel)]="order.DeliveryDate" 
+                [class.is-invalid]="DeliveryDate.invalid && DeliveryDate.touched" [min]="MinDate" [max]="MaxDate" [matDatepicker]="picker" placeholder="Choose a date" required> 
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field>
+                    <mat-label>Choose a time</mat-label>
+                <mat-select [disabled]="!DeliveryDate.valid" name="DeliveryTime" #DeliveryTime="ngModel" [(ngModel)]="order.DeliveryTime" 
+                [class.is-invalid]="DeliveryTime.invalid && DeliveryTime.touched"required>
+                  <mat-option  *ngFor="let time of TimeList" [value]=time.value>{{time.value}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              
+        </div>
+
+        <div class="col-md-3 col-sm-3 col-xs-12" style=" margin: 0 auto; border-radius: 5px;">
+        </div>
+
+        <!-- -------------------------------------------------------------------------- -->
+        <div class="col-md-8 col-sm-8 col-xs-12 shadow-lg p-4 mb-4 bg-white" style=" margin: 0 auto; margin-top:0px; border-radius: 5px">
+            <h5 class="sub-title">Payment Method</h5>
+
+            <mat-radio-group aria-label="Select an option" fxLayout="column" fxLayoutAlign="start start" [disabled]="!DeliveryTime.valid" [(ngModel)]="method" name="method">
+                    <mat-radio-button value="1" class="border radioBorder" >
+                        <div class="radio-button">
+                            Cash on delivery
+                        </div>
+                    </mat-radio-button>
+                    <mat-radio-button value="2" class="border radioBorder">
+                        <div class="radio-button">
+                            Online Transaction
+                        </div>
+                    </mat-radio-button>
+                </mat-radio-group>
+        </div>
+    
+        <div class="col-md-3 col-sm-3 col-xs-12" style=" margin: 0 auto; border-radius: 5px;">
+        </div>
+        
+    </div>
+    </form>
+</div>

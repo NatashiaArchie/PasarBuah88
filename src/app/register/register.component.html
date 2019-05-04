@@ -1,0 +1,52 @@
+<div class="bg">
+  <div class="container-fluid loginfont">
+      <div class="row">
+          <div class="col-md-4 col-sm-4 col-xs-12"></div>
+          <div class="col-md-4 col-sm-4 col-xs-12">
+              
+            <form class="form-container" #register="ngForm" (ngSubmit)="OnSubmit(register)">
+                <h1 class="loginh1">Register</h1>
+                  <input type="hidden" class="form-control hidden" placeholder="Enter Product Id">
+                  <div class="textbox">
+                      <label>Username</label>
+                      <input cdkFocusInitial type="input" class="form-control" placeholder="Enter Username"
+                      name="UserName" #UserName="ngModel" [(ngModel)]=user.UserName required>
+                      <small class="text-danger" [class.d-none]="UserName.valid || UserName.untouched">Username is required</small>
+                  </div>
+                  <div class="textbox">
+                    <label>Full Name</label>
+                    <input type="input" class="form-control" placeholder="Enter Full Name"
+                    name="FullName" #FullName="ngModel" [(ngModel)]=user.FullName required>
+                    <small class="text-danger" [class.d-none]="FullName.valid || FullName.untouched">Full name is required</small>
+                </div>
+                  <div class="textbox">
+                    <label>Email Address</label>
+                    <input type="input" class="form-control" placeholder="Enter Email Address"
+                    name="Email" #Email="ngModel" [(ngModel)]=user.Email required [pattern]="emailPattern">
+                    <small class="text-danger" [class.d-none]="Email.valid || Email.untouched">Invalid Email Address</small>
+                  </div>
+                  <div class="textbox">
+                      <label>Phone Number</label>
+                      <input type="input" class="form-control" placeholder="Enter Phone Number"
+                      name="PhoneNumber" #PhoneNumber="ngModel" [(ngModel)]=user.PhoneNumber required [pattern]="phonePattern">
+                      <small class="text-danger" [class.d-none]="PhoneNumber.valid || PhoneNumber.untouched">Invalid Phone Number</small>
+                  </div>
+                  <div class="form-group">
+                      <label>Password</label>
+                      <input type="password" class="form-control" placeholder="Enter Password"
+                      name="Password" #Password="ngModel" [(ngModel)]=user.Password required>
+                      <small class="text-danger" [class.d-none]="Password.valid || Password.untouched">Password is required</small>
+                  </div>  
+              <div class="textbox">
+                <button type="submit" [disabled]="!register.valid" class="btn btn-success btn-block">Register</button>
+              </div>
+              <div style="text-align: center">
+                <span >Have an Account? <a style="color: white" routerLink="/login">Login</a></span>
+            </div>
+          </form>
+          </div>
+          <div class="col-md-4 col-sm-4 col-xs-12"></div>
+      </div>
+  </div>
+</div>
+
