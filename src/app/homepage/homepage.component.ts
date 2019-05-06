@@ -4,6 +4,7 @@ import { CategoryService } from '../shared/category.service';
 import { Product } from '../shared/product.model';
 import { ProductService } from '../shared/product.service';
 import { ToastrService } from 'ngx-toastr';
+import { AnnouncementService } from '../shared/announcement.service';
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
@@ -14,23 +15,38 @@ category: Category[];
 product: Product[];
 productAddedToCart;
   imageSources = [
-    "../../assets/images/groceryimage.jpg",
-    "../../assets/images/background1.jpg",
-    "../../assets/images/background2.jpg",
-    "../../assets/images/background3.jpg",
+    // "../../assets/images/groceryimage.jpg",
+    // "../../assets/images/background1.jpg",
+    // "../../assets/images/background2.jpg",
+    // "../../assets/images/background3.jpg",
   ]
-
-  
+    
   constructor(
     public categoryService: CategoryService,
     public productService: ProductService,
+    public announcementService: AnnouncementService,
     public toastr: ToastrService
   ) { }
 
   ngOnInit() {
     this.categoryService.refreshList();
     this.categoryService.productRefreshList();
+    this.announcementService.refreshList();
+
+    this.announcementService.getList()
+    .subscribe((data:any) => {
+      console.log(data.length);
+      for(var i=0; i< data.length; i++) {
+        this.imageSources.push(data[i].ImageUrl)
+      } 
+    })
+    
+
+    
+    
   }
+
+
 
   addToCart(product: Product){
     console.log(product);
