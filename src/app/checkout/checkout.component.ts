@@ -13,6 +13,8 @@ import { ToastrService } from 'ngx-toastr';
 import { OrderDetailService } from '../shared/order-detail.service';
 import { OrderDetail } from '../shared/order-detail.model';
 import { Product } from '../shared/product.model';
+import { Router } from '@angular/router';
+import { DataService } from '../shared/data.service';
 
 @Component({
   selector: 'app-checkout',
@@ -54,7 +56,9 @@ export class CheckoutComponent implements OnInit {
     public productService: ProductService,
     public orderService: OrderService,
     public toastr: ToastrService,
-    public orderDetailService: OrderDetailService
+    public orderDetailService: OrderDetailService,
+    public router: Router,
+    public dataService: DataService
   ) { }
 
   ngOnInit() {
@@ -139,12 +143,18 @@ export class CheckoutComponent implements OnInit {
       this.orderDetailService.AddOrderDetail(this.orderDetail)
       .subscribe((detail) => {
         console.log(detail);
-        debugger;
         this.productService.removeAllProductFromCart();
-        
+        debugger;
+        this.getCheckoutDetail();
       })
     }
     
+  }
+
+  getCheckoutDetail() {
+    debugger;
+    this.router.navigate(["/checkoutdetail"]);
+    this.dataService.postOrderId(this.currentOrderId);
   }
 
   updateProductQuantity(product: Product, qty: number) {

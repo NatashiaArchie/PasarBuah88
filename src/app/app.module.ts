@@ -22,6 +22,7 @@ import { LoginLayoutComponent } from './layout/login-layout/login-layout.compone
 import { HomeLayoutComponent } from './layout/home-layout/home-layout.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { AddAddressComponent } from './add-address/add-address.component';
+import { CheckoutDetailComponent } from './checkout-detail/checkout-detail.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { AddAddressComponent } from './add-address/add-address.component';
     HomeLayoutComponent,
     CheckoutComponent,
     AddAddressComponent,
+    CheckoutDetailComponent,
   ],
   imports: [
     BrowserModule,

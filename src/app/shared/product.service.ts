@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Product } from './product.model';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 
 export class ProductService {
   cartList: Product[];
+  list: Product[];
   readonly rootUrl = 'http://localhost:50008/';
   constructor(
     public http: HttpClient
@@ -45,6 +46,11 @@ export class ProductService {
         ProductDescription: product.ProductDescription
       }
     return this.http.put(this.rootUrl + 'api/Product/'+product.ProductId, body)
-    
+  }
+
+  getProductList() {
+    var reqHeader = new HttpHeaders({'Authorization':'Bearer ' + localStorage.getItem('userToken')});
+    this.http.get(this.rootUrl + 'api/Product', {headers: reqHeader})
+    .toPromise().then(res => this.list = res as Product[])
   }
 }

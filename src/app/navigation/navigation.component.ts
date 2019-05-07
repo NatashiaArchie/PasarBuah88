@@ -21,7 +21,6 @@ export class NavigationComponent implements OnInit {
     dialogConfig.width = "550px";
     dialogConfig.height = "550px";
     this.dialog.open(CartComponent, dialogConfig);
-
   }
 
 }

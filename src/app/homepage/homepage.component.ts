@@ -5,6 +5,9 @@ import { Product } from '../shared/product.model';
 import { ProductService } from '../shared/product.service';
 import { ToastrService } from 'ngx-toastr';
 import { AnnouncementService } from '../shared/announcement.service';
+import { MatDialogConfig, MatDialog } from '@angular/material';
+import { CartComponent } from '../cart/cart.component';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
@@ -14,18 +17,15 @@ export class HomepageComponent implements OnInit {
 category: Category[];
 product: Product[];
 productAddedToCart;
-  imageSources = [
-    // "../../assets/images/groceryimage.jpg",
-    // "../../assets/images/background1.jpg",
-    // "../../assets/images/background2.jpg",
-    // "../../assets/images/background3.jpg",
-  ]
+  imageSources = []
     
   constructor(
     public categoryService: CategoryService,
     public productService: ProductService,
     public announcementService: AnnouncementService,
-    public toastr: ToastrService
+    public toastr: ToastrService,
+    public dialog: MatDialog,
+    public router: Router
   ) { }
 
   ngOnInit() {
@@ -40,10 +40,6 @@ productAddedToCart;
         this.imageSources.push(data[i].ImageUrl)
       } 
     })
-    
-
-    
-    
   }
 
 
@@ -88,8 +84,16 @@ productAddedToCart;
     }
   }
 
+  openDialog() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.width = "550px";
+    dialogConfig.height = "550px";
+    this.dialog.open(CartComponent, dialogConfig);
+  }
+
   signout() {
-    
+    localStorage.removeItem('userToken');
+    this.router.navigate(['/login']);
   }
   
 }
