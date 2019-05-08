@@ -145,16 +145,18 @@ export class CheckoutComponent implements OnInit {
         console.log(detail);
         this.productService.removeAllProductFromCart();
         debugger;
-        this.getCheckoutDetail();
+        this.getCheckoutDetail(this.currentOrderId);
       })
     }
     
   }
 
-  getCheckoutDetail() {
-    debugger;
-    this.router.navigate(["/checkoutdetail"]);
-    this.dataService.postOrderId(this.currentOrderId);
+  getCheckoutDetail(id: number) {
+    // debugger;
+    // this.router.navigate(["/checkoutdetail"]);
+    // this.dataService.postOrderId(this.currentOrderId);
+      this.router.navigate(['checkoutdetail', id]);
+    
   }
 
   updateProductQuantity(product: Product, qty: number) {

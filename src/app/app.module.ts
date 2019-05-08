@@ -23,6 +23,7 @@ import { HomeLayoutComponent } from './layout/home-layout/home-layout.component'
 import { CheckoutComponent } from './checkout/checkout.component';
 import { AddAddressComponent } from './add-address/add-address.component';
 import { CheckoutDetailComponent } from './checkout-detail/checkout-detail.component';
+import { OrderHistoryComponent } from './order-history/order-history.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { CheckoutDetailComponent } from './checkout-detail/checkout-detail.compo
     CheckoutComponent,
     AddAddressComponent,
     CheckoutDetailComponent,
+    OrderHistoryComponent,
   ],
   imports: [
     BrowserModule,

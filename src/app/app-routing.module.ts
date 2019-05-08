@@ -9,6 +9,7 @@ import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { LoginLayoutComponent } from './layout/login-layout/login-layout.component';
 import { CheckoutDetailComponent } from './checkout-detail/checkout-detail.component';
+import { OrderHistoryComponent } from './order-history/order-history.component';
 
 const routes: Routes = [
   
@@ -24,7 +25,9 @@ const routes: Routes = [
     { path: 'home', component: HomepageComponent},
     { path: 'cart', component: CartComponent },
     { path: 'checkout', component: CheckoutComponent },
-    { path: 'checkoutdetail', component: CheckoutDetailComponent }
+    { path: 'checkoutdetail', component: CheckoutDetailComponent },
+    { path: 'checkoutdetail/:id', component: CheckoutDetailComponent },
+    { path: 'orderhistory', component: OrderHistoryComponent },
   ]},
 
   
