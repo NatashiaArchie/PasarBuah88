@@ -83,7 +83,8 @@ export class CheckoutComponent implements OnInit {
       ProductId: null,
       Quantity: null,
       UnitPrice: null,
-      TotalPrice: null
+      TotalPrice: null,
+      Revenue: null,
     }
   }
 
@@ -137,9 +138,11 @@ export class CheckoutComponent implements OnInit {
       this.orderDetail.ProductId = this.productAddedToCart[i].ProductId;
       this.orderDetail.Quantity = this.productAddedToCart[i].CartQty;
       this.orderDetail.UnitPrice = this.productAddedToCart[i].SalesPrice;
-      this.orderDetail.TotalPrice = this.productAddedToCart[i].SalesPrice * this.productAddedToCart[i].CartQty;
+      this.orderDetail.TotalPrice = parseFloat((this.productAddedToCart[i].SalesPrice * this.productAddedToCart[i].CartQty).toFixed(2));
+      this.orderDetail.Revenue = parseFloat(((this.productAddedToCart[i].SalesPrice- this.productAddedToCart[i].RetailerPrice) * this.productAddedToCart[i].CartQty).toFixed(2));
       console.log(this.productAddedToCart[i]);
       this.updateProductQuantity(this.productAddedToCart[i], this.productAddedToCart[i].CartQty);
+
       this.orderDetailService.AddOrderDetail(this.orderDetail)
       .subscribe((detail) => {
         console.log(detail);
@@ -152,11 +155,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   getCheckoutDetail(id: number) {
-    // debugger;
-    // this.router.navigate(["/checkoutdetail"]);
-    // this.dataService.postOrderId(this.currentOrderId);
-      this.router.navigate(['checkoutdetail', id]);
-    
+      this.router.navigate(['checkoutdetail', id]);  
   }
 
   updateProductQuantity(product: Product, qty: number) {

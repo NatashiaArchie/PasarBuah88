@@ -20,7 +20,8 @@
                             <div class="radio-button" fxLayout="column" fxLayoutAlign="center start" style="width: 90%">      
                                 <span class="bold">{{address.Name}} </span>
                                 <span>{{address.PhoneNumber}}</span>
-                                <span>{{address.DeliveryAddress}}</span>
+                                <span style="width: 100%; overflow: hidden;
+                                text-overflow: ellipsis;">{{address.DeliveryAddress}}</span>
                             </div>
                             <div fxLayout="column" fxLayoutAlign="end center" style="width: 10%">      
                                 <span><i class="material-icons" (click)="editDialog(address)">edit</i></span>

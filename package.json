@@ -9,7 +9,6 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "deploy": "ng build --prod --base-href https://NatashiaArchie.github.io/PasarBuah88/ && angular-cli-ghpages --branch gh-pages -d dist/PasarBuah88"
-
   },
   "private": true,
   "homepage": "",
@@ -43,7 +42,7 @@
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^0.13.8",
+    "@angular-devkit/build-angular": "^0.13.9",
     "@angular/cli": "~7.3.1",
     "@angular/compiler-cli": "~7.2.0",
     "@angular/language-service": "~7.2.0",

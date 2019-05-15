@@ -42,8 +42,6 @@ productAddedToCart;
     })
   }
 
-
-
   addToCart(product: Product){
     console.log(product);
     

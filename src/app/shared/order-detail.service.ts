@@ -19,7 +19,8 @@ export class OrderDetailService {
       ProductId: od.ProductId,
       Quantity: od.Quantity,
       UnitPrice: od.UnitPrice,
-      TotalPrice: od.TotalPrice
+      TotalPrice: od.TotalPrice,
+      Revenue: od.Revenue
     }
     return this.http.post(this.rootUrl + 'api/OrderDetails', body);
   }

@@ -4,4 +4,5 @@ export class OrderDetail {
     Quantity: number;
     UnitPrice: number;
     TotalPrice: number;
+    Revenue: number;
 }
