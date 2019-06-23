@@ -23,7 +23,7 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" routerLink="" (click)="openDialog()">
+                  <a class="nav-link" (click)="openDialog()">
                     <span data-feather="file"></span>
                     Cart
                   </a>
@@ -69,23 +69,12 @@
           <img class="images" [src]=cat.ImageUrl>
       </div>
       <div>
-          <a class="nav-link" style="font-weight: 500">
+          <a class="nav-link" style="font-weight: 500" (click)="view(cat.CategoryName)">
             <span >{{cat.CategoryName}}</span>
           </a>
       </div>
     </mat-grid-tile>
 
-  <!-- <mat-grid-tile class="shadow bg-white">
-      <div style="max-width: 60%; height: 80%;" fxLayout="row" fxLayoutAlign="center center" >
-          <img class="images" src="../../assets/images/meats.png" >
-      </div> 
-      <div>
-          <a class="nav-link">
-            <span data-feather="layers"></span>
-            Fresh Product
-          </a>
-      </div>
-    </mat-grid-tile> -->
   </mat-grid-list>
 
 </div>
@@ -119,5 +108,5 @@
         </mat-grid-tile>
       </mat-grid-list>
   </div>
-  </div>
+</div>
   

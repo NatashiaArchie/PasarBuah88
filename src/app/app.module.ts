@@ -11,7 +11,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { HomepageComponent } from './homepage/homepage.component';
 import { UserService } from './shared/user.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { MaterialModule } from './material/material.module';
 import { MatDividerModule } from '@angular/material';
@@ -24,6 +24,9 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { AddAddressComponent } from './add-address/add-address.component';
 import { CheckoutDetailComponent } from './checkout-detail/checkout-detail.component';
 import { OrderHistoryComponent } from './order-history/order-history.component';
+import { PaymentComponent } from './payment/payment.component';
+import { NgxStripeModule } from 'ngx-stripe';
+import { CategoryProductComponent } from './category-product/category-product.component';
 
 @NgModule({
   declarations: [
@@ -40,12 +43,15 @@ import { OrderHistoryComponent } from './order-history/order-history.component';
     AddAddressComponent,
     CheckoutDetailComponent,
     OrderHistoryComponent,
+    PaymentComponent,
+    CategoryProductComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     SlideshowModule,
     MaterialModule,
@@ -59,6 +65,8 @@ import { OrderHistoryComponent } from './order-history/order-history.component';
       useColumnBasisZero: false,
       printWithBreakpoints: ['md', 'lt-lg', 'lt-xl', 'gt-sm', 'gt-xs']
     }),
+    //stripe
+    NgxStripeModule.forRoot('pk_test_BoSQxYIdKkqIh6SOb9udh1rs00zyskGeAQ')
 
   ],
   providers: [UserService],

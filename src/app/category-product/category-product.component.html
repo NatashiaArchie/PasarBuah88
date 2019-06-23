@@ -1,0 +1,37 @@
+
+<!-- ------------------------------------------Product------------------------------------------------ -->
+<div class="row">
+  <div class="col-md-11 col-sm-10 col-xs-12 shadow-lg p-4 mb-4 bg-white" style=" margin: 0 auto; margin-top:70px;border-radius: 5px;">
+    <div class="borderbottom" style="margin-top: 10px" fxLayout="row" fxLayoutAlign="space-between center" >
+      <h1 class="h1">{{categoryId}}</h1>
+      <button type="button" class="btn btn-sm btn-outline-info actionButton" (click)="back()">Back to Home</button>
+  
+    </div>
+    <br>
+
+    <mat-grid-list cols="5" rowHeight="3:4">
+      <div *ngFor="let pd of categoryService.productList">
+        <mat-grid-tile class="shadow bg-white" *ngIf="pd.Category == categoryId">
+          <div  fxLayout="column" fxLayoutAlign="center center" style="height: 100%; width: 100%; align-items: normal">
+              <div style="height: 50%" fxLayout="row" fxLayoutAlign="center center"> 
+                  <img class="images" [src]=pd.ImageUrl>
+              </div>
+              <!----------------------------------------------------------------------------------------------->
+              <div class="productDetail" fxLayout="column" fxLayoutAlign="center start">
+                  <div class="row" style ="margin-left: 0px">
+                      <h5 class="h5" *ngIf="pd.Category == categoryId">RM {{pd.SalesPrice | number : '1.2-2'}}</h5><small>/ {{pd.ProductUnitType}}</small>
+                  </div>
+                  <div class="desc" matTooltip={{pd.ProductName}} matTooltipPosition="below">
+                    <h6>{{pd.ProductName}}</h6> 
+                  </div>
+                  <div class="desc" matTooltip={{pd.ProductDescription}} matTooltipPosition="below">
+                    <small >{{pd.ProductDescription}}</small>
+                  </div>  
+                  <button class="btn btn-sm btn-block" (click)="addToCart(pd)">Add to Card</button>
+              </div>
+          </div>   
+        </mat-grid-tile>
+      </div>
+      </mat-grid-list>
+  </div>
+</div>

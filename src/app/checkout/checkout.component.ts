@@ -15,6 +15,7 @@ import { OrderDetail } from '../shared/order-detail.model';
 import { Product } from '../shared/product.model';
 import { Router } from '@angular/router';
 import { DataService } from '../shared/data.service';
+import { PaymentComponent } from '../payment/payment.component';
 
 @Component({
   selector: 'app-checkout',
@@ -103,6 +104,13 @@ export class CheckoutComponent implements OnInit {
     this.dialog.open(AddAddressComponent,dialogConfig);
   }
 
+  openDialogPayment() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.width= '400px';
+    dialogConfig.height= '300px';
+    this.dialog.open(PaymentComponent,dialogConfig);
+  }
+
   UpdateTotalPrice() {
     this.totalPrice = 0;
     this.cart = this.productService.getProductFromCart();
@@ -126,8 +134,18 @@ export class CheckoutComponent implements OnInit {
       debugger;
       this.toastr.success("Successful Checkout");
       this.currentOrderId = data.OrderId;
-      this.UploadOrderDetail();
+      this.MakePayment(data);
+      
     });
+  }
+
+  MakePayment(checkoutInfo: any){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.width= '500px';
+    dialogConfig.height= '400px';
+    dialogConfig.data = checkoutInfo;
+    // this.dialog.open(PaymentComponent,dialogConfig);
+    this.UploadOrderDetail();
   }
 
   UploadOrderDetail() {

@@ -1,0 +1,7 @@
+<form novalidate (ngSubmit)="buy()" [formGroup]="stripeTest">
+    <label for="card-element">
+      Credit or debit card payment
+    </label>
+  <div id="card-element" class="field"></div>
+  <button type="submit" class="btn btnn" >Pay {{ totalPrice }}</button>
+</form>

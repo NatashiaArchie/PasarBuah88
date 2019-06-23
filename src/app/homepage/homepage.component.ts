@@ -93,5 +93,9 @@ productAddedToCart;
     localStorage.removeItem('userToken');
     this.router.navigate(['/login']);
   }
+
+  view(id) {
+    this.router.navigate(['category', id]);
+  }
   
 }

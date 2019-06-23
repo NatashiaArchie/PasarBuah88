@@ -7,10 +7,18 @@ import { Subject } from 'rxjs';
 export class DataService {
   private orderId = new Subject<number>();
   currentOrderId = this.orderId.asObservable();
+
+  private categoryId = new Subject<number>();
+  currentCategoryId = this.categoryId.asObservable();
+
   constructor() { }
 
   postOrderId(Id: number) {
     this.orderId.next(Id)
+  }
+
+  postCategoryId(Id: number) {
+    this.categoryId.next(Id)
   }
   
 }

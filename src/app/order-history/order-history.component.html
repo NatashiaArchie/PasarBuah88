@@ -14,14 +14,10 @@
           </thead>
           <tbody>
             <tr *ngFor="let order of orderService.orderList">
-              <td>
-                <a class="nav-link" *ngIf="order.CustomerId == customerId">
-                  {{order.OrderId}}
-                </a>
-              </td>
-              <td>{{order.PurchaseDate | date:'medium'}}</td>
-              <td>{{order.TotalPrice | number:'1.2-2'}}</td>
-              <td>
+              <td *ngIf="order.CustomerId == customerId"><a class="nav-link">{{order.OrderId}}</a></td>
+              <td *ngIf="order.CustomerId == customerId">{{order.PurchaseDate | date:'medium'}}</td>
+              <td *ngIf="order.CustomerId == customerId">{{order.TotalPrice | number:'1.2-2'}}</td>
+              <td *ngIf="order.CustomerId == customerId">
                 <button type="button" class="btn btn-sm btn-outline-info actionButton" (click)="viewDetail(order.OrderId)">View</button>
               </td>
             </tr>
@@ -35,7 +31,7 @@
       </div>
 
       <!-- -------------------------------------------------------------------------- -->
-      <div class="col-md-8 col-sm-8 col-xs-12 shadow-lg p-4 mb-4 bg-white" style=" margin: 0 auto; margin-top:0px; border-radius: 5px; height: 150px">
+      <div class="col-md-8 col-sm-8 col-xs-12" style=" margin: 0 auto; margin-top:0px; border-radius: 5px; height: 150px">
             
       </div>
 
@@ -43,7 +39,7 @@
       </div>
 
       <!-- -------------------------------------------------------------------------- -->
-      <div class="col-md-8 col-sm-8 col-xs-12 shadow-lg p-4 mb-4 bg-white" style=" margin: 0 auto; margin-top:0px; border-radius: 5px">
+      <div class="col-md-8 col-sm-8 col-xs-12" style=" margin: 0 auto; margin-top:0px; border-radius: 5px">
 
       </div>
   
